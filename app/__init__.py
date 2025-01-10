@@ -27,9 +27,11 @@ def create_app(config_name='development'):
     config_manager = ConfigManager(app)
     config_manager.load_config(config_name=config_name)
 
-    # Initialize SQLAlchemy and Migrate with the app
+
+    # Initialize SQLAlchemy and Migrate with the app modificacion para probarel workflow
     db.init_app(app)
     migrate.init_app(app, db)
+
 
     # Register modules
     module_manager = ModuleManager(app)
