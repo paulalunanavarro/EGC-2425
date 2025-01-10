@@ -3,6 +3,10 @@ name: Run tests
 on:
   push:
     branches: [config/ci]
+  
+  pull_request:
+    branches:
+      - main
 
 jobs:
   pytest:
@@ -36,12 +40,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Check for outdated dependencies
+    - name: outdated dependencies
       run: |
         pip list --outdated > outdated_dependencies.txt
-
-    - name: Show outdated dependencies
-      run: cat outdated_dependencies.txt
 
     - name: Run Tests
       env:
