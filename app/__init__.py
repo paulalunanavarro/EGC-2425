@@ -28,6 +28,7 @@ def create_app(config_name='development'):
     config_manager.load_config(config_name=config_name)
 
     # Initialize SQLAlchemy and Migrate with the app
+    db.init_app(app, uri=os.getenv('DB_CONNECTION_STRING')) #conflicto apartado 7
     db.init_app(app, uri=os.getenv('DATABASE_URI')) #conflicto apartado 7
     migrate.init_app(app, db)
 
